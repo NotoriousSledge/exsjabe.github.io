@@ -29,6 +29,7 @@
         <link rel="stylesheet" href="ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="./src/index.css">
 
     </head>
     <body>
@@ -83,7 +84,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="todo.html"><strong aria-hidden="true">1.</strong> Utvecklingssteg</a></li><li class="chapter-item expanded "><a href="features.html"><strong aria-hidden="true">2.</strong> Arkitektur och Funktioner</a></li><li class="chapter-item expanded "><a href="gantt.html" class="active"><strong aria-hidden="true">3.</strong> Tidsprojektion</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="todo.html"><strong aria-hidden="true">1.</strong> Utvecklingssteg</a></li><li class="chapter-item expanded "><a href="features.html"><strong aria-hidden="true">2.</strong> Arkitektur</a></li><li class="chapter-item expanded "><a href="gantt.html" class="active"><strong aria-hidden="true">3.</strong> Tidsprojektion</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -145,36 +146,99 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="webforage-tidsprojektion"><a class="header" href="#webforage-tidsprojektion">WebForage Tidsprojektion</a></h1>
-<p>Preliminärt uppskattas projektet att ta 3 månader, d.v.s. 480 timmar,
-med stegen listade i <a href="./todo.html">kapitel 1</a> fördelade enligt diagrammet nedan.</p>
-<pre class="mermaid">  gantt
+<p>Premilinärt projiceras projektets lägre gräns till <code>1309</code> effektiva arbetstimmar och övre gräns till <code>2568</code>,
+med en genomsnittlig komplexitet på <code>3/5</code> och en genomsnittlig korrekthet av estimat på <code>4/5</code>.</p>
+<h2 id="utveckling"><a class="header" href="#utveckling">Utveckling</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Rubrik</th><th>Lägst</th><th>Högst</th><th>Komplexitet</th><th>Korrekthet</th><th>Kommentar</th></tr></thead><tbody>
+<tr><td><b>JSON-Schema</b></td><td><b>40</b></td><td><b>100</b></td><td><b>4</b></td><td><b>4</b></td><td><b></b></td></tr>
+<tr><td>Definiera den struktur alla mallar ska följa</td><td>40</td><td>100</td><td>4</td><td>4</td><td>Kommer att fortsätta utvecklas under projektets gång</td></tr>
+<tr><td><b>Motor för tolkning av mall</b></td><td><b>456</b></td><td><b>692</b></td><td><b>3</b></td><td><b>3</b></td><td><b></b></td></tr>
+<tr><td>Starta en Headless Browser</td><td>8</td><td>16</td><td>1</td><td>2</td><td>Kan förekomma problem vid att starta en extern process inuti Lambda</td></tr>
+<tr><td>Plocka ut HTML-taggar utifrån mallen</td><td>40</td><td>60</td><td>3</td><td>3</td><td></td></tr>
+<tr><td>Navigera sida och invänta ändringar</td><td>80</td><td>120</td><td>4</td><td>3</td><td></td></tr>
+<tr><td>Plocka ut data i olika dataformer</td><td>160</td><td>240</td><td>5</td><td>3</td><td>Stöd för att få ut data i form av objekt, listor och tal</td></tr>
+<tr><td>Spara data enligt struktur i mall</td><td>80</td><td>120</td><td>3</td><td>4</td><td></td></tr>
+<tr><td>Identifiera olika versioner av samma sida</td><td>8</td><td>16</td><td>1</td><td>5</td><td>Tunga lyftet sker i mallen, motorn behöver bara kunna söka genom en lista</td></tr>
+<tr><td>Validera att data är giltigt enligt mall</td><td>80</td><td>120</td><td>4</td><td>2</td><td></td></tr>
+<tr><td><b>API</b></td><td><b>88</b></td><td><b>136</b></td><td><b>2</b></td><td><b>5</b></td><td><b></b></td></tr>
+<tr><td>Endpoints för att läsa och skriva data till databasen</td><td>80</td><td>120</td><td>2</td><td>4</td><td></td></tr>
+<tr><td>Endpoints för att läsa och skriva mallar och länkar till databasen</td><td>8</td><td>16</td><td>1</td><td>5</td><td></td></tr>
+<tr><td><b>Felhanteringstjänst</b></td><td><b>240</b></td><td><b>400</b></td><td><b>3</b></td><td><b>3</b></td><td><b></b></td></tr>
+<tr><td>Skilja mellan brytande och icke-brytande fel</td><td>40</td><td>80</td><td>3</td><td>2</td><td></td></tr>
+<tr><td>Signalera vid brytande fel</td><td>20</td><td>40</td><td>2</td><td>3</td><td></td></tr>
+<tr><td>Markera trasiga mallar</td><td>20</td><td>40</td><td>1</td><td>4</td><td></td></tr>
+<tr><td>Analysera resultat utifrån mönster angivna i mall</td><td>160</td><td>240</td><td>5</td><td>1</td><td></td></tr>
+<tr><td><b>Infra</b></td><td><b>20</b></td><td><b>40</b></td><td><b>1</b></td><td><b>5</b></td><td><b></b></td></tr>
+<tr><td>CRON Job som körs varje timme</td><td>20</td><td>40</td><td>1</td><td>5</td><td></td></tr>
+<tr><td><b>Total</b></td><td><b>844</b></td><td><b>1368</b></td><td><b>3</b></td><td><b>4</b></td><td><b></b></td></tr>
+</tbody></table>
+</div>
+<h2 id="drift-och-installation"><a class="header" href="#drift-och-installation">Drift och Installation</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Rubrik</th><th>Lägst</th><th>Högst</th><th>Komplexitet</th><th>Korrekthet</th><th>Kommentar</th></tr></thead><tbody>
+<tr><td><b>Mallar för target-siter</b></td><td><b>80</b></td><td><b>160</b></td><td><b>4</b></td><td><b>1</b></td><td><b></b></td></tr>
+<tr><td>Skapa mallar för alla LoopOns önskade siter</td><td>80</td><td>160</td><td>4</td><td>1</td><td>Kommer variera dramatiskt på mängden siter och hur mycket de skiljer sig från varann</td></tr>
+<tr><td><b>AWS</b></td><td><b>40</b></td><td><b>80</b></td><td><b>4</b></td><td><b>3</b></td><td><b></b></td></tr>
+<tr><td>Driftsätta motor på AWS</td><td>40</td><td>80</td><td>4</td><td>3</td><td>Via verktyget SST</td></tr>
+<tr><td><b>API-Lager</b></td><td><b>40</b></td><td><b>80</b></td><td><b>2</b></td><td><b>4</b></td><td><b></b></td></tr>
+<tr><td>Driftsätta API hos Explizit</td><td>40</td><td>80</td><td>2</td><td>4</td><td></td></tr>
+<tr><td><b>MongoDB</b></td><td><b>40</b></td><td><b>80</b></td><td><b>2</b></td><td><b>4</b></td><td><b></b></td></tr>
+<tr><td>Driftsätta databas hos Explizit</td><td>40</td><td>80</td><td>2</td><td>4</td><td></td></tr>
+<tr><td><b>Total</b></td><td><b>200</b></td><td><b>400</b></td><td><b>3</b></td><td><b>3</b></td><td><b></b></td></tr>
+</tbody></table>
+</div>
+<h2 id="test"><a class="header" href="#test">Test</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Rubrik</th><th>Lägst</th><th>Högst</th><th>Komplexitet</th><th>Korrekthet</th><th>Kommentar</th></tr></thead><tbody>
+<tr><td><b>Unit-Test</b></td><td><b>80</b></td><td><b>160</b></td><td><b>3</b></td><td><b>3</b></td><td><b></b></td></tr>
+<tr><td>Motor</td><td>40</td><td>80</td><td>2</td><td>4</td><td></td></tr>
+<tr><td>Felhanteringstjänst</td><td>40</td><td>80</td><td>4</td><td>2</td><td></td></tr>
+<tr><td><b>Regressions Test</b></td><td><b>80</b></td><td><b>160</b></td><td><b>3</b></td><td><b>3</b></td><td><b></b></td></tr>
+<tr><td>Skapa test site</td><td>40</td><td>80</td><td>2</td><td>3</td><td>Kommer variera på mängden features som måste testas</td></tr>
+<tr><td>Motor funktionalitet</td><td>40</td><td>80</td><td>3</td><td>3</td><td></td></tr>
+<tr><td><b>Manuell Finslipning</b></td><td><b>64</b></td><td><b>360</b></td><td><b>4</b></td><td><b>3</b></td><td><b></b></td></tr>
+<tr><td>Skillnader i miljöer</td><td>40</td><td>160</td><td>5</td><td>1</td><td>Troligen det största möjliga problemet vi kan stöta på</td></tr>
+<tr><td>Integrations Test</td><td>16</td><td>40</td><td>2</td><td>3</td><td>Testning av hela flödet kräver manuell hantering</td></tr>
+<tr><td>Prestanda</td><td>8</td><td>160</td><td>5</td><td>4</td><td>Lambda måste bli klar inom 15 min och kostar mer ju mer minne de drar</td></tr>
+<tr><td><b>Total</b></td><td><b>224</b></td><td><b>680</b></td><td><b>3</b></td><td><b>3</b></td><td><b></b></td></tr>
+</tbody></table>
+</div>
+<h2 id="dokumentation"><a class="header" href="#dokumentation">Dokumentation</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Rubrik</th><th>Lägst</th><th>Högst</th><th>Komplexitet</th><th>Korrekthet</th><th>Kommentar</th></tr></thead><tbody>
+<tr><td><b>Intern</b></td><td><b>16</b></td><td><b>56</b></td><td><b>2</b></td><td><b>5</b></td><td><b></b></td></tr>
+<tr><td>Dokumentera teknologier och mönster</td><td>8</td><td>40</td><td>2</td><td>5</td><td></td></tr>
+<tr><td>Dokumenetera driftsättning och underhåll</td><td>8</td><td>16</td><td>2</td><td>5</td><td></td></tr>
+<tr><td><b>Extern</b></td><td><b>25</b></td><td><b>64</b></td><td><b>2</b></td><td><b>5</b></td><td><b></b></td></tr>
+<tr><td>Lathund för arbetsflöde</td><td>8</td><td>16</td><td>2</td><td>5</td><td></td></tr>
+<tr><td>Exempel-mallar</td><td>1</td><td>8</td><td>1</td><td>5</td><td>Behövs endast ifall prod-mallarna inte täcker all funktionalitet</td></tr>
+<tr><td>Dokumentation av offentligt API (Swagger/OpenAPI?)</td><td>16</td><td>40</td><td>3</td><td>5</td><td></td></tr>
+<tr><td><b>Total</b></td><td><b>41</b></td><td><b>120</b></td><td><b>2</b></td><td><b>5</b></td><td><b></b></td></tr>
+</tbody></table>
+</div><pre class="mermaid">  gantt
         dateFormat  YYYY-MM-DD
         axisFormat v. %W
         title Gantt Diagram över WebForage tidsprojektion
 
         section Utveckling
-        JSON-Schema för mall :active, des1, 2023-01-01, 2023-03-01
-        Motor för tolkning av mall : des2, 2023-01-07, 2023-03-01
-        API-lager MongoDB : des3, 2023-02-01, 15d
-        Felhantering : 2023-02-14, 14d
-        API för mallar : des4, after des1, 11d
+JSON-Schema : active, schema, 2023-01-01, 100h
+Motor för tolkning av mall : crit, engine, after schema, 692h
+API : api, after engine, 136h
+Felhanteringstjänst : crit, error, after api, 400h
+Infra : infra, after error, 40h
 
+section Drift och Installation
+Mallar för target-siter : crit, template, after schema, 160h
+AWS : crit, aws, after infra, 80h
+API-Lager : host-api, after aws, 80h
+MongoDB : mongo, after host-api, 80h
 
-        section Drift
-        Mallar för target-siter : 2023-01-14, 2023-03-01
-        MongoDB  : after des1, 7d
-        API-Lager : after des1, 10d
-        AWS : after des4, 2023-04-01
+section Test
+Unit-Test : unit, after schema, 160h
+Regressions Test : regression, after aws, 160h
+Manuell Finslipning : manual, after error, 360h
 
-        section Testing
-        Unit-Testing Motor :active, 2023-01-14, 2023-03-01
-        Integrations Test : after des1, 14d
-        Manuell Finslipning : after des1, 2023-04-01
+section Dokumentation
+Intern : after manual, 56h
+Extern : after manual, 64h
 
-
-        section Dokumentation
-        Intern Dokumentation : after des1, 2023-04-01
-        Extern Dokumentation : after des1, 2023-04-01
 </pre>
 
                     </main>
