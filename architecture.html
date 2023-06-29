@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Utvecklingssteg - WebForage Tidsprojektion</title>
+        <title>Arkitektur - WebForage Tidsprojektion</title>
 
 
         <!-- Custom HTML head -->
@@ -84,7 +84,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="todo.html" class="active"><strong aria-hidden="true">1.</strong> Utvecklingssteg</a></li><li class="chapter-item expanded "><a href="features.html"><strong aria-hidden="true">2.</strong> Arkitektur</a></li><li class="chapter-item expanded "><a href="gantt.html"><strong aria-hidden="true">3.</strong> Tidsprojektion</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="development.html"><strong aria-hidden="true">1.</strong> Utvecklingssteg</a></li><li class="chapter-item expanded "><a href="architecture.html" class="active"><strong aria-hidden="true">2.</strong> Arkitektur</a></li><li class="chapter-item expanded "><a href="projection.html"><strong aria-hidden="true">3.</strong> Tidsprojektion</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -145,72 +145,18 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="webforage-utvecklingssteg"><a class="header" href="#webforage-utvecklingssteg">WebForage Utvecklingssteg</a></h1>
-<h2 id="utveckling"><a class="header" href="#utveckling">Utveckling</a></h2>
-<ul>
-<li>JSON-Schema för strukturen på mallar
-<ul>
-<li>Möjliggör <code>One source of truth</code> för både intern- och extern-användning</li>
-</ul>
-</li>
-<li>Motor för att tolka mallar
-<ul>
-<li>Se <a href="./features.html">kapitel 2</a></li>
-</ul>
-</li>
-<li>API för mallar
-<ul>
-<li>Skicka in och ändra mallar</li>
-<li>Skicka in länkar kopplade till mall</li>
-</ul>
-</li>
-<li>API för att hämta ut data
-<ul>
-<li>Feed-logik med timestamp</li>
-</ul>
-</li>
-<li>API-lager över databas</li>
-<li>Felhantering
-<ul>
-<li>Skilja på brytande och icke-brytande</li>
-<li>Signalera vid brytande fel</li>
-<li>Markera mallar som trasiga vid brytande fel</li>
-</ul>
-</li>
-</ul>
-<h2 id="produktdrift"><a class="header" href="#produktdrift">Produkt/Drift</a></h2>
-<ul>
-<li>Mallar för LoopOns olika target-siter
-<ul>
-<li>Kommer utvecklas sida-vid-sida med motorn och mall-strukturen</li>
-</ul>
-</li>
-<li>MongoDB databas hos Explizit</li>
-<li>API-Lager för databas hos Explizit</li>
-<li>Driftsättning på AWS
-<ul>
-<li>via verktyget SST som förenklar <code>infrastructure as code</code> för AWS</li>
-</ul>
-</li>
-</ul>
-<h2 id="tester"><a class="header" href="#tester">Tester</a></h2>
-<ul>
-<li>Automatiserade unit-tester för tolkning av mall</li>
-<li>Automatiserade integrations-tester för tolkning av mall, skanning av sida och sparande av data</li>
-<li>Manuell finslipning</li>
-</ul>
-<h2 id="dokumentation"><a class="header" href="#dokumentation">Dokumentation</a></h2>
-<ul>
-<li>Dokumentation för internt underhåll</li>
-<li>Dokumentation för extern konsumption</li>
-</ul>
+                        <h1 id="webforage-arkitektur"><a class="header" href="#webforage-arkitektur">WebForage Arkitektur</a></h1>
+<p><img src="./webforage_architecture.png" alt="WebForage Architecture" /></p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="development.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
 
-                            <a rel="next" href="features.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="projection.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -220,8 +166,11 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="development.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
 
-                    <a rel="next" href="features.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="projection.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
